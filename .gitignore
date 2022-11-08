@@ -1,3 +1,7 @@
 node_modules
 
+# typescript build
+dist
+
+# package-lock.json
 package-lock.json
