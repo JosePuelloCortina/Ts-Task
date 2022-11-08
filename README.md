@@ -1,5 +1,5 @@
 # Ts-Task
 
 <p align="left">
-  <img height="400" src="./image/captura.JPG" />
+  <img height="400" src="./image/captura.jpg" />
 </p>
