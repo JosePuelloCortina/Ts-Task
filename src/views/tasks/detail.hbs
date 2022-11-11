@@ -1,25 +1,20 @@
-<h1>List Tasks</h1>
-<div class="row">
-    {{#each tasks}}
-        <div class="col-md-3 p-4">
+<div class="container d-flex justify-content-center aling-items-center">
+    <div class="col-md-3 p-4">
             <div class="card">
                 <div class="card-header d-flex justify-content-center aling-items-center">
-                    <a class="nav-link" href="/tasks/detail/{{_id}}">
-                        <h3>{{title}}</h3>
-                    </a>
+                    <h3 class="d-flex justify-content-center aling-items-center">{{taskDetail.title}}</h3>
                 </div>
                 <div class="card-body">
-                    <p>{{description}}</p>
+                    <p>{{taskDetail.description}}</p>
                 </div>
                 <div class="card-footer d-flex justify-content-between aling-items-center">
-                    <a href="/tasks/delete/{{_id}}" class="btn btn-danger">
+                    <a href="/tasks/delete/{{taskDetail._id}}" class="btn btn-danger">
                         Delete
                     </a>
-                    <a href="/tasks/edit/{{_id}}" class="btn btn-secondary">
+                    <a href="/tasks/edit/{{taskDetail._id}}" class="btn btn-secondary">
                         Edit
                     </a>
                 </div>
             </div>
         </div>
-    {{/each}}
 </div>

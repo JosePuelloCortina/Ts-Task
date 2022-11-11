@@ -10,6 +10,12 @@ const TaskSchema = new Schema({
         type: String,
         require: true,
         lowercase: true
+    },
+    estado: {
+        type: Boolean,
+        default: true,
+        require: true,
+        lowercase: true
     }
 })
 

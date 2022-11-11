@@ -42,5 +42,17 @@ router.route('/edit/:id')
         await Task.findByIdAndUpdate(id, { title, description})
         res.redirect('/tasks/list')
     })
+
+router.route('/detail/:id')
+    .get(async (req: Request, res: Response) =>{
+        const { id } = req.params;
+        const taskDetail = await Task.findById(id).lean()
+        res.render('tasks/detail', { taskDetail })
+    })
+    .post(async (req: Request, res: Response)=>{
+        const { id } = req.params;
+        const { status } = req.body;
+        await Task.findByIdAndUpdate(id, { status })
+    })
  
 export default router;
