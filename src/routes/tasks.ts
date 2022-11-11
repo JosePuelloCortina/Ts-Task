@@ -10,8 +10,11 @@ router.route('/create')
     .get((req:Request, res:Response)=>{
         res.render('tasks/create')
     })
-    .post(async(req: Request, res:Response) => {
+    .post(async(req: Request, res:Response, next) => {
         const {title, description} = req.body;
+        if (!title || !description){
+            return res.status(422).render('tasks/alert')
+        }
         const newTask = new Task({title, description})
         await newTask.save();
         res.redirect('/tasks/list')
@@ -20,6 +23,9 @@ router.route('/create')
 router.route('/list')
     .get(async (req: Request, res:Response) => {
         const tasks = await Task.find({}).lean()
+        if(tasks.length == 0){
+            return res.render('tasks/empty')
+        }
         res.render('tasks/list', { tasks })
     })
 
@@ -39,6 +45,9 @@ router.route('/edit/:id')
     .post(async(req:Request, res:Response) => {
         const { id } = req.params;
         const { title, description } = req.body;
+        if (!title || !description){
+            return res.status(422).render('tasks/alert')
+        }
         await Task.findByIdAndUpdate(id, { title, description})
         res.redirect('/tasks/list')
     })
